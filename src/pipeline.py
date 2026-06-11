@@ -3,7 +3,7 @@ import sqlite3
 from datetime import datetime
 
 try:
-    response = requests.get("https://dolarapi.co")
+    response = requests.get("https://dolarapi.com/v1/dolares")
     data = response.json()
     con = sqlite3.connect("data/dolar.db")
     timestamp = datetime.now()
@@ -28,7 +28,7 @@ try:
     print(f'Se guardaron {len(data)} registros a las {timestamp}')
     con.close()
 except Exception as e:
-    print(f'Error: {e}, porfavor intentelo nuevamente')
+    print(f'Error: {e}, porfavor intentelo nuevamente.')
             
 
 
