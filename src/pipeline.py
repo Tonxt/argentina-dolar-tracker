@@ -24,13 +24,9 @@ try:
         con.execute("INSERT INTO dolar_datos VALUES(?, ?, ?, ?, ?)" ,(elemento['casa'],elemento['compra'],elemento['venta'],elemento['fechaActualizacion'], str(timestamp)))
         
     con.commit()
-    print('\n')
-    print(f'Se guardaron {len(data)} registros a las {timestamp}')
-    con.close()
+    print(f'\nSe guardaron {len(data)} registros a las {timestamp}')
 except Exception as e:
     print(f'Error: {e}, porfavor intentelo nuevamente.')
+finally:
+    con.close()
             
-
-
-
-
