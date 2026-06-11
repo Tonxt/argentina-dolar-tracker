@@ -1,3 +1,4 @@
-git add .gitignore
-git commit -m "Initial setup with gitignore and virtual environment"
-git push
+venv/
+data/
+__pycache__/
+*.pyc
