@@ -1,6 +1,7 @@
 import requests
 import sqlite3
 from datetime import datetime
+con = None
 
 try:
     response = requests.get("https://dolarapi.com/v1/dolares")
@@ -28,5 +29,6 @@ try:
 except Exception as e:
     print(f'Error: {e}, porfavor intentelo nuevamente.')
 finally:
-    con.close()
+    if con:
+        con.close()
             
