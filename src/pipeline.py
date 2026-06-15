@@ -31,4 +31,3 @@ except Exception as e:
 finally:
     if con:
         con.close()
-            
