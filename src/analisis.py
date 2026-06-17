@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import matplotlib.pyplot as plt
 con = sqlite3.connect("data/dolar.db")
 
 df = pd.read_sql(
@@ -12,5 +13,5 @@ ultimo_por_dia = df.groupby(['fecha','casa'])['timestamp_registro'].max()
 ultimo_por_dia = ultimo_por_dia.reset_index()
 df_limpio = df.merge(ultimo_por_dia, on=['fecha','casa','timestamp_registro'])
 
-print(df_limpio.shape)  
-print(df_limpio.head())
+df_pivot = df_limpio.pivot(index='fecha',columns='casa',values='venta')
+print(df_pivot.plot())
