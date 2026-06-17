@@ -31,6 +31,7 @@ try:
     plt.ylabel('Value')
     plt.xticks(rotation=45)
     plt.tight_layout()
+    print(df_pivot)
     plt.show()
 except Exception as e:
     print(f'Error: {e}, porfavor intentelo nuevamente')
