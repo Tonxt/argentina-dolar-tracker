@@ -1,4 +1,6 @@
-# Bibliotecas utilizadas 
+""" Lee la base de datos, limpia duplicados por día, pivota los datos y genera un gráfico de la evolución histórica"""
+
+# Librerias utilizadas 
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -15,7 +17,7 @@ try:
                     )
 
 
-    #Limpieza de datos
+    # Limpieza de datos                                                                                                                                                                                                                                                                                                                      
     df['timestamp_registro'] = pd.to_datetime(df['timestamp_registro'])
     df['fecha'] = df['timestamp_registro'].dt.date
     ultimo_por_dia = df.groupby(['fecha','casa'])['timestamp_registro'].max()
@@ -24,15 +26,15 @@ try:
     df_pivot = df_limpio.pivot(index='fecha',columns='casa',values='venta')
 
 
-    #Grafico
+    # Grafico
     df_pivot.plot()
     plt.title('Evolucion del Dolar por Tipo de Cambio(junio 2026)')
     plt.xlabel('Date')
     plt.ylabel('Value')
     plt.xticks(rotation=45)
     plt.tight_layout()
-    print(df_pivot)
     plt.show()
+    
 except Exception as e:
     print(f'Error: {e}, porfavor intentelo nuevamente')
 finally:

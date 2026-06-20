@@ -1,4 +1,8 @@
+""" Es una herramienta de utilidad para inspeccionar rápidamente el contenido de la base de datos desde la terminal """
+
+#Libreria utilizada
 import sqlite3
+
 con = None
 
 try:

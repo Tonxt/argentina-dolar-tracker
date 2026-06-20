@@ -1,9 +1,13 @@
+""" Llama a la API, transforma los datos, los guarda en SQLite con timestamp """
+
+#Librerias utilizadas
 import requests
 import sqlite3
 from datetime import datetime
 con = None
 
 try:
+    #Llamado de la API y conexion a la database
     response = requests.get("https://dolarapi.com/v1/dolares")
     data = response.json()
     con = sqlite3.connect("data/dolar.db")

@@ -1,19 +1,22 @@
+""" Versión local del dashboard, lee de SQLite y muestra tabla, métricas y gráfico histórico """
+
 # Librerias utilizadas 
 import streamlit as st
 import sqlite3
 import pandas as pd
 
+
 con = None
-
-
 try:
     #Conexion a la database
     con = sqlite3.connect("data/dolar.db")
+    
     
     #Carga de datos
     df = pd.read_sql(
                 """SELECT * FROM dolar_datos""",con
                 )
+
 
     #Limpieza de datos  
     df['timestamp_registro'] = pd.to_datetime(df['timestamp_registro'])
@@ -52,6 +55,7 @@ try:
     col_5.metric("Mayorista", p_mayorista)
     col_6.metric("Contado con Liqui", p_ccl)
     col_7.metric("Tarjeta", p_tarjeta)
+
 
     st.subheader("Historical Chart")
     st.line_chart(df_pivot)
